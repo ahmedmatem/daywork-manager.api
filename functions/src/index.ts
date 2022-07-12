@@ -7,6 +7,8 @@ import {usersRoutesConfig} from "./users/users-routes.config"
 import { dayworksRoutesConfig } from "./dayworks/dayworks-routes.config"
 import { workersRoutingsConfig } from "./workers/workers-routes.config"
 
+require('dotenv').config()
+
 admin.initializeApp()
 
 const app = express()
