@@ -1,5 +1,6 @@
 import {Request, Response} from "express"
 import * as admin from "firebase-admin"
+import { Worker } from "../workers/workers.controller";
 
 export async function create(req: Request, res: Response) {
   try {
@@ -16,8 +17,10 @@ export async function create(req: Request, res: Response) {
     });
     await admin.auth().setCustomUserClaims(uid, {role})
 
-    // save user as worker in database    
-    await admin.database().ref('workers/' + uid).set(userData)
+    // save user as worker in database 
+    const userAsWorker: Worker = userData as Worker
+    userAsWorker.id = uid
+    await admin.database().ref('workers/' + uid).set(userAsWorker)
 
     return res.status(201).send({uid});
   } catch (err) {

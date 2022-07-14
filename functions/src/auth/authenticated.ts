@@ -28,7 +28,7 @@ export async function isAuthenticated(req: Request, res: Response, next: Functio
           role: decodedToken.role, 
           email: decodedToken.email
         }
-    console.log('Res locals: ' + res.locals)
+    // console.log('Res locals: ' + JSON.stringify(res.locals))
     return next()
   } catch (err: any) {
     console.error(`${err.code} -  ${err.message}`)

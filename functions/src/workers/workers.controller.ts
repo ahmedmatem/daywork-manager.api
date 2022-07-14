@@ -3,7 +3,7 @@ import * as admin from 'firebase-admin'
 
 const WORKERS_END_POINT = 'workers'
 
-interface Worker {
+export interface Worker {
     id: string,
     name: string,
     registratedOn: string,
